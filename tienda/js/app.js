@@ -1,6 +1,6 @@
 'use strict'
 
-//Decalracion de variable que contendra los datos
+//Decalracion de variables
 var resultado =  [];
 var htmlCarrito = ``;
 
@@ -126,7 +126,8 @@ async function seleccionarProducto(id){
 }
 
 
-//funcion para realizar los filtros dependiendo de la opciones que seleccione el usuario
+//funcion para realizar los filtros dependiendo de la opciones 
+//que seleccione el usuario
 function seleccionarOpcion(){
     var categorias = document.querySelector('#categorias');
     var filtros = document.querySelector('#filtros');
