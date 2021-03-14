@@ -23,9 +23,10 @@ function escribirProductos(resultado){
                 <img src="${image}" class="card-img-top" alt="...">
            
                 <div class="card-body">
-                    <h5class="card-title">${result.name}</h5>
+                    <h5 class="card-title">${result.name}</h5>
                     <p class="card-text">$ ${result.price}</p>
-                    <p class="card-text">% ${result.discount}</p>                    
+                    <p class="card-text descuento" >% ${result.discount}</p> 
+                                 
                 </div>
 
                 <div class="card-footer text-muted">
@@ -63,7 +64,7 @@ async function peticion(param,resultado){
 }
 
 async function peticionFiltros(param,resultado){
-    
+
    try {
     const res = await fetch('http://localhost:3000/api/category',{
         method: 'POST',
@@ -91,6 +92,7 @@ function seleccionarOpcion(){
     
     peticionFiltros(data,resultado);
 }
+
 
 //se cargan datos al cargarse la pagina
 window.addEventListener("load", function(event) {
