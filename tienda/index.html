@@ -33,6 +33,35 @@
         <h1>Aqui iran los productos seleccionados</h1>
       </div>
 
+      <div id="opciones-filtros" >
+
+        <ul class="nav">
+          <li class="nav-item">
+            
+            <select class="form-select" id="categorias" onchange="seleccionarOpcion();">
+              <option selected>Todos</option>
+              <option value="1">Bebida Energetica</option>
+              <option value="2">Pisco</option>
+              <option value="3">Ron</option>
+              <option value="4">Bebida</option>
+              <option value="5">Snack</option>
+              <option value="6">Cerveza</option>
+              <option value="7">Vodka</option>
+            </select>
+          </li>
+          <li class="nav-item">
+            <select class="form-select" id="filtros" onchange="seleccionarOpcion();" >
+              <option value="name">Nombre Producto</option>
+              <option value="discount">Descuentos</option>
+              <option value="price">Precios Mas Bajos</option>
+            </select>
+          </li>
+        </ul>
+          
+
+      </div>
+      <br>
+      
       <div id="productos" class="row card-productos">
       </div>
     </div>

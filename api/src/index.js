@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 //rutas
 app.use('/api/product',require('./routes/products'));
-
+app.use('/api/category',require('./routes/category'));
 // iniciando el servidor
 app.listen(app.get('port'),()=>{
     console.log('Servidor en puerto',app.get('port'));

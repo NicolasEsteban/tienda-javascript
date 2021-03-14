@@ -1,6 +1,6 @@
 'use strict'
 
-//Decalracion de variables
+//Decalracion de variable que contendra los datos
 var resultado =  [];
 
 
@@ -60,16 +60,36 @@ async function peticion(param,resultado){
     } catch (error) {
         console.log(error);
     }
-    /*
-    fetch(`http://localhost:3000/${param}`,{
-        method: 'GET'
-    })
-    .then(data =>data.json())
-    .then(data =>{
-        //console.log(data);
-        resultado = data;
-        escribirProductos(resultado);
-    });*/
+}
+
+async function peticionFiltros(param,resultado){
+    
+   try {
+    const res = await fetch('http://localhost:3000/api/category',{
+        method: 'POST',
+        body: JSON.stringify(param),
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }); 
+    const data = await res.json();
+    resultado = data;
+    console.log(resultado);
+    escribirProductos(resultado);
+} catch (error) {
+    console.log(error);
+}
+}
+
+function seleccionarOpcion(){
+    var categorias = document.querySelector('#categorias');
+    var filtros = document.querySelector('#filtros');
+    var data = {
+        categorias: categorias.value ,
+        filtros: filtros.value
+    }
+    
+    peticionFiltros(data,resultado);
 }
 
 //se cargan datos al cargarse la pagina
