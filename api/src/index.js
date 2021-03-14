@@ -9,7 +9,7 @@ app.set('port',process.env.PORT || 3000);
 app.use(express.json());
 app.use(cors());
 //rutas
-app.use(require('./routes/products'));
+app.use('/api/product',require('./routes/products'));
 
 // iniciando el servidor
 app.listen(app.get('port'),()=>{

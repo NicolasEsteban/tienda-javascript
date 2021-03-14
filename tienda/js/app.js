@@ -1,35 +1,67 @@
 'use strict'
 
-
+//Decalracion de variables
 var resultado =  [];
 
+
+
+//Funciones
+//Escribe los datos en el documento html
 function escribirProductos(resultado){
     console.log(resultado);
     var html=``;
     resultado.forEach(result => {
-        console.log(result);
-        html +=`<div  class="col-md-3 mb-4">
-        <div class="card">
-           <img src="${result.url_image}" class="card-img-top" alt="...">
+        var image = result.url_image;
+        //En caso de que se encuentren elementos sin imagen
+        if(image===null || image===""){ 
+            image = 'https://www.te.gob.mx/media/images/portal/imagen-no-disponible.png';
+        }
+        html +=`
+        
+        <div  class="col-md-3 mb-4">
+            <div class="card">
+                <img src="${image}" class="card-img-top" alt="...">
            
-           <div class="card-body">
-                <h5class="card-title">${result.name}</h5>
-                <p class="card-text">$ ${result.price}</p>
-                <a href="#" class="btn btn-primary"> <i class="fa fa-cart-plus" style="font-size:24px"></i>  </a>
+                <div class="card-body">
+                    <h5class="card-title">${result.name}</h5>
+                    <p class="card-text">$ ${result.price}</p>
+                    <p class="card-text">% ${result.discount}</p>                    
+                </div>
+
+                <div class="card-footer text-muted">
+                    <a href="#" class="btn btn-primary"> <i class="fa fa-cart-plus" style="font-size:24px"></i>  </a>
+                </div>
             </div>
         </div>
-        </div>
+        
         `;
         
 
     });
-   
+    //se ingresa elemento html en div seleccionado  
     document.getElementById('productos').innerHTML = html;
 }
 
-
-function peticion(){
-    fetch('http://localhost:3000',{
+// Se realiza la consulta a la api
+async function peticion(param,resultado){
+    //console.log(resultado);
+    //console.log(param);
+    try {
+        var res;
+        if(param ==null){
+            res = await fetch('http://localhost:3000/api/product/');
+        }else{
+            res = await fetch(`http://localhost:3000/api/product/${param}`);
+        }     
+        const data = await res.json();
+        resultado = data;
+        //console.log(resultado);
+        escribirProductos(resultado);
+    } catch (error) {
+        console.log(error);
+    }
+    /*
+    fetch(`http://localhost:3000/${param}`,{
         method: 'GET'
     })
     .then(data =>data.json())
@@ -37,13 +69,21 @@ function peticion(){
         //console.log(data);
         resultado = data;
         escribirProductos(resultado);
-    });
+    });*/
 }
 
 //se cargan datos al cargarse la pagina
-document.addEventListener("DOMContentLoaded", function(event) {
-    peticion();
+window.addEventListener("load", function(event) {
+    
+    var boton_buscador = document.querySelector('#boton_buscador');
+    var input_buscador = document.querySelector('#input_buscador');
 
+    peticion(input_buscador.value,resultado);
+
+    boton_buscador.addEventListener('click',()=>{
+        peticion(input_buscador.value,resultado);
+    });
+    
 });
 
 /*fetch('http://localhost:3000',{

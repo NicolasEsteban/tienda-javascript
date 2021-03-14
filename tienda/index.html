@@ -13,24 +13,27 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand">Bsale Test</a>
-          <form class="d-flex">
-            <a class="navbar-brand">Tienda</a>
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Buscar</button>
-            <button class="btn  boton" > <i class="fa fa-shopping-cart" style="color:white" ></i></button>
-          </form>
-        </div>
-    </nav>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="col-md-6">
+      <a class="navbar-brand">Bsale Test</a>
+      </div>
+      <a class="navbar-brand">Tienda</a>
+      <form class="d-flex" action="">
+        <input class="form-control me-2" id="input_buscador" type="text" placeholder="Buscar">
+        <button class="btn btn-outline-dark" id="boton_buscador" type="button"><i class="fa fa-search"></i></button>
+      </form>
+      <button class="btn  boton col-md-1" > <i class="fa fa-shopping-cart" ></i></button>
+    </div>
+  </nav>
+
 
     <div class="container">
       <div class="compras">
         <h1>Aqui iran los productos seleccionados</h1>
       </div>
 
-      <div id="productos" class="row">
+      <div id="productos" class="row card-productos">
       </div>
     </div>
     
