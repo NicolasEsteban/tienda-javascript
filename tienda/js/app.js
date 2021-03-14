@@ -75,16 +75,20 @@ async function peticionFiltros(param,resultado){
     }); 
     const data = await res.json();
     resultado = data;
-    console.log(resultado);
+    //console.log(resultado);
     escribirProductos(resultado);
-} catch (error) {
-    console.log(error);
+    } catch (error) {
+        console.log(error);
+    }
 }
-}
-
+//funcion para realizar los filtros dependiendo de la opciones que seleccione el usuario
 function seleccionarOpcion(){
     var categorias = document.querySelector('#categorias');
     var filtros = document.querySelector('#filtros');
+    
+    //console.log(categorias.value);
+    //console.log(filtros.value);
+    
     var data = {
         categorias: categorias.value ,
         filtros: filtros.value

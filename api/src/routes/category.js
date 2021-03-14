@@ -8,13 +8,17 @@ router.post('/',(req,res)=>{
     //console.log(parseInt(categorias));
     var query = 'select * from product';
     //para agregar el o las condiciones
-    if(filtros == 'discount'){
-        query = query + ' where discount > 0';
-        if(categorias != 'Todos'){
-            var category = parseInt(categorias);
-            query = query + ' AND category = '+category;
+    if(categorias != 'Todos'){
+        var category = parseInt(categorias);
+        query = query + ' where category = '+category;
+        if(filtros == 'discount'){
+            query = query + ' AND discount > 0';
         }
+    }else{
+        query = query + ' where discount > 0';
     }
+
+
     // para ver como se ordenaran los datos
     if(filtros == 'name' || filtros == 'price'){
         query = query + ' order by '+filtros+ ' asc';
