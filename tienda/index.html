@@ -23,14 +23,35 @@
         <input class="form-control me-2" id="input_buscador" type="text" placeholder="Buscar">
         <button class="btn btn-outline-dark" id="boton_buscador" type="button"><i class="fa fa-search"></i></button>
       </form>
-      <button class="btn  boton col-md-1" > <i class="fa fa-shopping-cart" ></i></button>
+      <button class="btn  boton col-md-1" onclick="mostrar();"> <i class="fa fa-shopping-cart" ></i></button>
     </div>
   </nav>
 
 
     <div class="container">
-      <div class="compras">
+      <div id="compras" class="compras">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <button class="btn  boton col-md-1" onclick="cerrar();"> <i class="fa fa-close" style="font-size:24px;color: brown;"></i>  </button>
+          </li>
+        </ul>
+
+
         <h1>Aqui iran los productos seleccionados</h1>
+        <div id="tabla_compras">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Descuento (%)</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoTabla" class="cuerpoTabla">
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div id="opciones-filtros" >
@@ -65,6 +86,8 @@
       <div id="productos" class="row card-productos">
         <!--Aqui se muestran los productos-->
       </div>
+
+      
     </div>
     
     <script src="./js/app.js"></script>

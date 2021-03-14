@@ -31,4 +31,17 @@ router.get('/:param',(req,res)=>{
     });
 });
 
+router.get('/buscar/:id',(req,res)=>{
+    const id = req.params.id;
+    console.log(id);
+    
+    mysqlConnection.query('select a.name , b.name as nameCategory, a.price, a.discount  from product a, category b where a.category = b.id AND a.id = ?',[id],(err,rows,fields)=>{
+        if(!err){
+            res.json(rows);
+        }else{
+            console.log(err);
+        }
+    });
+});
+
 module.exports = router;

@@ -25,8 +25,8 @@ router.post('/',(req,res)=>{
     }else{
         query = query + ' order by '+filtros+ ' desc';
     }
-    
-    console.log(query);
+     
+    //console.log(query); 
     mysqlConnection.query(query,(err,rows,fields)=>{
         if(!err){
             res.json(rows);
