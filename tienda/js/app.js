@@ -63,9 +63,9 @@ async function peticion(param,resultado){
     try {
         var res;
         if(param ==null){
-            res = await fetch('http://localhost:3000/api/product/');
+            res = await fetch('https://app-tiendatest-api.herokuapp.com/api/product/');
         }else{
-            res = await fetch(`http://localhost:3000/api/product/${param}`);
+            res = await fetch(`https://app-tiendatest-api.herokuapp.com/api/product/${param}`);
         }     
         const data = await res.json();
         resultado = data;
@@ -79,7 +79,7 @@ async function peticion(param,resultado){
 async function peticionFiltros(param,resultado){
 
    try {
-    const res = await fetch('http://localhost:3000/api/category',{
+    const res = await fetch('https://app-tiendatest-api.herokuapp.com/api/category',{
         method: 'POST',
         body: JSON.stringify(param),
         headers:{
@@ -100,7 +100,7 @@ async function seleccionarProducto(id){
     
     //console.log(id);
     try {
-        const res = await fetch(`http://localhost:3000/api/product/buscar/${id}`);
+        const res = await fetch(`https://app-tiendatest-api.herokuapp.com/api/product/buscar/${id}`);
         const data = await res.json();
         //console.log(data);
         data.forEach(dat =>{
