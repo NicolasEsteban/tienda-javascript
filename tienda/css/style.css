@@ -1,23 +1,10 @@
-#boton{
-    border: none;
-}
 
-.card-productos .card{
+.card-products .card{
     height: 100%;
 }
 
-.card-productos .card img{
+.card-products .card img{
     height: 200px;
     object-fit: cover;
 }
-
-.descuento{
-    color: blue;
-}
-
-
-
-
-
-
 
