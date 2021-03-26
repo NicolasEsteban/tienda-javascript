@@ -31,10 +31,12 @@ router.post('/', async (req, res) => {
         }
     }
     //console.log(query);
-    await pool.query(query, (error, rows, fields)=>{
+    /*await pool.query(query, (error, rows, fields)=>{
         if (error) throw error;
         res.json(rows);
-    });
+    });*/
+    var products = await pool.query(query);
+    res.json(products);
 });
 
 module.exports = router;
