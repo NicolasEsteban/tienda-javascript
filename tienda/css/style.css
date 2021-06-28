@@ -4,7 +4,19 @@
 }
 
 .card-products .card img{
-    height: 200px;
+    height: 300px;
     object-fit: cover;
+}
+
+.section{
+    height: 200vh;  
+}
+
+
+
+footer{
+    bottom:0px;
+    height:30px;
+    width:100%; 
 }
 
